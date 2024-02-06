@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        body{
+            background-image: url("https://img.freepik.com/free-vector/halftone-background-with-circles_23-2148907689.jpg?size=626&ext=jpg&ga=GA1.1.432054737.1693889021&semt=ais");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        td{
+            color: black;
+            font-weight: 800;
+            padding: 8px;
+        }
+        th{
+            color:darkred;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    {% extends "navbar.html "%}
+    {% block content %}
+    <div style="margin-top: 100px;">
+        <div style="text-align: center;">
+            <h1 style="font-weight: 800;color: white;">EMPLOYEE DETAILS</h1>
+        </div>
+        <table style="width:90%;border-collapse: collapse;background-color: white;margin: auto;">
+            <tr>
+                <th style="border: 2px solid black;text-align: center;">SL.NO</th>
+                <th style="border: 2px solid black;text-align: center;">NAME</th>
+                <th style="border: 2px solid black;text-align: center;">ID</th>
+                <th style="border: 2px solid black;text-align: center;">DEPT</th>
+                <th style="border: 2px solid black;text-align: center;">SALARY</th>
+                <th colspan="2" style="border: 2px solid black;text-align: center;">ACTION</th>
+            </tr>
+            {% for i in value %}
+            <tr>
+                <td  style="border: 2px solid black;text-align: center;">{{i[0]}}</td>
+                <td  style="border: 2px solid black;text-align: center;">{{i[1]}}</td>
+                <td  style="border: 2px solid black;text-align: center;">{{i[2]}}</td>
+                <td  style="border: 2px solid black;text-align: center;">{{i[3]}}</td>
+                <td  style="border: 2px solid black;text-align: center;">{{i[4]}}</td>
+                <td  style="border: 2px solid black;text-align: center;"><a href="{{url_for('Edit',SL_NO=i[0])}}" style="background-color: blue;color: white;padding:3px 8px;">EDIT</a></td>
+                <td  style="border: 2px solid black;text-align: center;"><a href="{{url_for('Delete',SL_NO=i[0])}}" style="background-color: red;color: white;padding:3px 8px;">DELETE</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}
+</body>
+</html>
